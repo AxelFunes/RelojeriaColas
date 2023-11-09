@@ -73,11 +73,13 @@
             this.labelStats = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lbl_OcupAyudante = new System.Windows.Forms.Label();
-            this.lbl_Ocup_Relojero = new System.Windows.Forms.Label();
             this.lbl_Prob_ST = new System.Windows.Forms.Label();
+            this.lbl_Ocup_Relojero = new System.Windows.Forms.Label();
+            this.lbl_OcupAyudante = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtA = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBoxParameters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFromRowToRow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLastRow)).BeginInit();
@@ -100,6 +102,8 @@
             // groupBoxParameters
             // 
             this.groupBoxParameters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.groupBoxParameters.Controls.Add(this.txtA);
+            this.groupBoxParameters.Controls.Add(this.label6);
             this.groupBoxParameters.Controls.Add(this.txtDemoraCafe);
             this.groupBoxParameters.Controls.Add(this.label3);
             this.groupBoxParameters.Controls.Add(this.txtProbCafe);
@@ -137,7 +141,7 @@
             this.groupBoxParameters.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxParameters.Name = "groupBoxParameters";
             this.groupBoxParameters.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxParameters.Size = new System.Drawing.Size(1070, 115);
+            this.groupBoxParameters.Size = new System.Drawing.Size(1070, 133);
             this.groupBoxParameters.TabIndex = 3;
             this.groupBoxParameters.TabStop = false;
             this.groupBoxParameters.Text = "Parámetros";
@@ -153,12 +157,12 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(839, 45);
+            this.label3.Location = new System.Drawing.Point(881, 46);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 16);
+            this.label3.Size = new System.Drawing.Size(50, 16);
             this.label3.TabIndex = 27;
-            this.label3.Text = "Demora Cafe:";
+            this.label3.Text = "Valor h:";
             // 
             // txtProbCafe
             // 
@@ -171,18 +175,18 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(839, 17);
+            this.label2.Location = new System.Drawing.Point(835, 15);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 16);
+            this.label2.Size = new System.Drawing.Size(96, 16);
             this.label2.TabIndex = 25;
-            this.label2.Text = "P() de Cafe:";
+            this.label2.Text = "P() de Descanso:";
             // 
             // buttonSimulate
             // 
             this.buttonSimulate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.buttonSimulate.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonSimulate.Location = new System.Drawing.Point(935, 69);
+            this.buttonSimulate.Location = new System.Drawing.Point(972, 91);
             this.buttonSimulate.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSimulate.Name = "buttonSimulate";
             this.buttonSimulate.Size = new System.Drawing.Size(94, 42);
@@ -217,7 +221,7 @@
             this.labelFixParentesis.Location = new System.Drawing.Point(799, 78);
             this.labelFixParentesis.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelFixParentesis.Name = "labelFixParentesis";
-            this.labelFixParentesis.Size = new System.Drawing.Size(11, 16);
+            this.labelFixParentesis.Size = new System.Drawing.Size(12, 16);
             this.labelFixParentesis.TabIndex = 21;
             this.labelFixParentesis.Text = ")";
             this.labelFixParentesis.Click += new System.EventHandler(this.labelFixParentesis_Click);
@@ -228,7 +232,7 @@
             this.labelFixComa.Location = new System.Drawing.Point(741, 78);
             this.labelFixComa.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelFixComa.Name = "labelFixComa";
-            this.labelFixComa.Size = new System.Drawing.Size(10, 16);
+            this.labelFixComa.Size = new System.Drawing.Size(11, 16);
             this.labelFixComa.TabIndex = 20;
             this.labelFixComa.Text = ";";
             this.labelFixComa.Click += new System.EventHandler(this.labelFixComa_Click);
@@ -239,7 +243,7 @@
             this.labelFix.Location = new System.Drawing.Point(564, 78);
             this.labelFix.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelFix.Name = "labelFix";
-            this.labelFix.Size = new System.Drawing.Size(125, 16);
+            this.labelFix.Size = new System.Drawing.Size(126, 16);
             this.labelFix.TabIndex = 19;
             this.labelFix.Text = "Tiempo de arreglo: U(";
             this.labelFix.Click += new System.EventHandler(this.labelFix_Click);
@@ -268,7 +272,7 @@
             this.labelParenthesisTime.Location = new System.Drawing.Point(511, 76);
             this.labelParenthesisTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelParenthesisTime.Name = "labelParenthesisTime";
-            this.labelParenthesisTime.Size = new System.Drawing.Size(11, 16);
+            this.labelParenthesisTime.Size = new System.Drawing.Size(12, 16);
             this.labelParenthesisTime.TabIndex = 16;
             this.labelParenthesisTime.Text = ")";
             // 
@@ -278,7 +282,7 @@
             this.labelComaTime.Location = new System.Drawing.Point(453, 76);
             this.labelComaTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelComaTime.Name = "labelComaTime";
-            this.labelComaTime.Size = new System.Drawing.Size(10, 16);
+            this.labelComaTime.Size = new System.Drawing.Size(11, 16);
             this.labelComaTime.TabIndex = 15;
             this.labelComaTime.Text = ";";
             // 
@@ -288,7 +292,7 @@
             this.labelBuyTime.Location = new System.Drawing.Point(273, 76);
             this.labelBuyTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelBuyTime.Name = "labelBuyTime";
-            this.labelBuyTime.Size = new System.Drawing.Size(128, 16);
+            this.labelBuyTime.Size = new System.Drawing.Size(129, 16);
             this.labelBuyTime.TabIndex = 14;
             this.labelBuyTime.Text = "Tiempo de compra: U(";
             // 
@@ -298,7 +302,7 @@
             this.labelRetireP.Location = new System.Drawing.Point(562, 48);
             this.labelRetireP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelRetireP.Name = "labelRetireP";
-            this.labelRetireP.Size = new System.Drawing.Size(75, 16);
+            this.labelRetireP.Size = new System.Drawing.Size(76, 16);
             this.labelRetireP.TabIndex = 13;
             this.labelRetireP.Text = "P() de retiro:";
             this.labelRetireP.Click += new System.EventHandler(this.labelRetireP_Click);
@@ -309,7 +313,7 @@
             this.labelGiveP.Location = new System.Drawing.Point(273, 46);
             this.labelGiveP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelGiveP.Name = "labelGiveP";
-            this.labelGiveP.Size = new System.Drawing.Size(86, 16);
+            this.labelGiveP.Size = new System.Drawing.Size(87, 16);
             this.labelGiveP.TabIndex = 12;
             this.labelGiveP.Text = "P() de entrega:";
             // 
@@ -319,7 +323,7 @@
             this.labelBuyP.Location = new System.Drawing.Point(15, 46);
             this.labelBuyP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelBuyP.Name = "labelBuyP";
-            this.labelBuyP.Size = new System.Drawing.Size(91, 16);
+            this.labelBuyP.Size = new System.Drawing.Size(92, 16);
             this.labelBuyP.TabIndex = 11;
             this.labelBuyP.Text = "P() de comprar:";
             // 
@@ -347,7 +351,7 @@
             this.labelParentesis.Location = new System.Drawing.Point(238, 73);
             this.labelParentesis.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelParentesis.Name = "labelParentesis";
-            this.labelParentesis.Size = new System.Drawing.Size(11, 16);
+            this.labelParentesis.Size = new System.Drawing.Size(12, 16);
             this.labelParentesis.TabIndex = 8;
             this.labelParentesis.Text = ")";
             // 
@@ -357,7 +361,7 @@
             this.labelComa.Location = new System.Drawing.Point(180, 73);
             this.labelComa.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelComa.Name = "labelComa";
-            this.labelComa.Size = new System.Drawing.Size(10, 16);
+            this.labelComa.Size = new System.Drawing.Size(11, 16);
             this.labelComa.TabIndex = 7;
             this.labelComa.Text = ";";
             // 
@@ -377,7 +381,7 @@
             this.labelClientsDistribution.Location = new System.Drawing.Point(14, 74);
             this.labelClientsDistribution.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelClientsDistribution.Name = "labelClientsDistribution";
-            this.labelClientsDistribution.Size = new System.Drawing.Size(111, 16);
+            this.labelClientsDistribution.Size = new System.Drawing.Size(112, 16);
             this.labelClientsDistribution.TabIndex = 6;
             this.labelClientsDistribution.Text = "Llegada clientes: U(";
             // 
@@ -433,7 +437,7 @@
             this.labelQuantityIterations.Location = new System.Drawing.Point(562, 17);
             this.labelQuantityIterations.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelQuantityIterations.Name = "labelQuantityIterations";
-            this.labelQuantityIterations.Size = new System.Drawing.Size(127, 16);
+            this.labelQuantityIterations.Size = new System.Drawing.Size(128, 16);
             this.labelQuantityIterations.TabIndex = 2;
             this.labelQuantityIterations.Text = "Cant de iteraciones (i):";
             this.labelQuantityIterations.Click += new System.EventHandler(this.labelQuantityIterations_Click);
@@ -444,7 +448,7 @@
             this.labelFromIteration.Location = new System.Drawing.Point(273, 15);
             this.labelFromIteration.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelFromIteration.Name = "labelFromIteration";
-            this.labelFromIteration.Size = new System.Drawing.Size(153, 16);
+            this.labelFromIteration.Size = new System.Drawing.Size(154, 16);
             this.labelFromIteration.TabIndex = 1;
             this.labelFromIteration.Text = "Mostrar desde iteración (j):";
             // 
@@ -454,7 +458,7 @@
             this.labelTime.Location = new System.Drawing.Point(14, 15);
             this.labelTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(147, 16);
+            this.labelTime.Size = new System.Drawing.Size(148, 16);
             this.labelTime.TabIndex = 0;
             this.labelTime.Text = "Tiempo de simulación (X):";
             // 
@@ -541,7 +545,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(18, 25);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(140, 16);
+            this.label4.Size = new System.Drawing.Size(141, 16);
             this.label4.TabIndex = 8;
             this.label4.Text = "Ocupacion del ayudante:";
             // 
@@ -562,35 +566,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Resultados";
             // 
-            // label7
+            // lbl_Prob_ST
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(18, 48);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(132, 16);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Ocupacion del relojero:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(18, 72);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(124, 16);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "P() Reloj sin terminar:";
-            // 
-            // lbl_OcupAyudante
-            // 
-            this.lbl_OcupAyudante.AutoSize = true;
-            this.lbl_OcupAyudante.Font = new System.Drawing.Font("Microsoft YaHei", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_OcupAyudante.Location = new System.Drawing.Point(162, 24);
-            this.lbl_OcupAyudante.Name = "lbl_OcupAyudante";
-            this.lbl_OcupAyudante.Size = new System.Drawing.Size(33, 19);
-            this.lbl_OcupAyudante.TabIndex = 14;
-            this.lbl_OcupAyudante.Text = "____";
+            this.lbl_Prob_ST.AutoSize = true;
+            this.lbl_Prob_ST.Font = new System.Drawing.Font("Microsoft YaHei", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Prob_ST.Location = new System.Drawing.Point(162, 70);
+            this.lbl_Prob_ST.Name = "lbl_Prob_ST";
+            this.lbl_Prob_ST.Size = new System.Drawing.Size(33, 19);
+            this.lbl_Prob_ST.TabIndex = 16;
+            this.lbl_Prob_ST.Text = "____";
             // 
             // lbl_Ocup_Relojero
             // 
@@ -602,15 +586,53 @@
             this.lbl_Ocup_Relojero.TabIndex = 15;
             this.lbl_Ocup_Relojero.Text = "____";
             // 
-            // lbl_Prob_ST
+            // lbl_OcupAyudante
             // 
-            this.lbl_Prob_ST.AutoSize = true;
-            this.lbl_Prob_ST.Font = new System.Drawing.Font("Microsoft YaHei", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Prob_ST.Location = new System.Drawing.Point(162, 70);
-            this.lbl_Prob_ST.Name = "lbl_Prob_ST";
-            this.lbl_Prob_ST.Size = new System.Drawing.Size(33, 19);
-            this.lbl_Prob_ST.TabIndex = 16;
-            this.lbl_Prob_ST.Text = "____";
+            this.lbl_OcupAyudante.AutoSize = true;
+            this.lbl_OcupAyudante.Font = new System.Drawing.Font("Microsoft YaHei", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_OcupAyudante.Location = new System.Drawing.Point(162, 24);
+            this.lbl_OcupAyudante.Name = "lbl_OcupAyudante";
+            this.lbl_OcupAyudante.Size = new System.Drawing.Size(33, 19);
+            this.lbl_OcupAyudante.TabIndex = 14;
+            this.lbl_OcupAyudante.Text = "____";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(18, 72);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(125, 16);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "P() Reloj sin terminar:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(18, 48);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(133, 16);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Ocupacion del relojero:";
+            // 
+            // txtA
+            // 
+            this.txtA.Location = new System.Drawing.Point(935, 69);
+            this.txtA.Margin = new System.Windows.Forms.Padding(2);
+            this.txtA.Name = "txtA";
+            this.txtA.Size = new System.Drawing.Size(76, 22);
+            this.txtA.TabIndex = 30;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(914, 73);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(17, 16);
+            this.label6.TabIndex = 29;
+            this.label6.Text = "a:";
             // 
             // MainForm
             // 
@@ -691,6 +713,8 @@
         private System.Windows.Forms.Label lbl_Prob_ST;
         private System.Windows.Forms.Label lbl_Ocup_Relojero;
         private System.Windows.Forms.Label lbl_OcupAyudante;
+        private System.Windows.Forms.TextBox txtA;
+        private System.Windows.Forms.Label label6;
     }
 }
 

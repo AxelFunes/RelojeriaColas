@@ -21,7 +21,7 @@ namespace RelojeriaColas.Principal
         public double TiempoArregloD { get; set; } = 18;
         public double TiempoArregloH { get; set; } = 22;
         public double RetireTime { get; set; } = 3;
-        public double ProbCafe { get; set; } = 0.1;
-        public double DemoraCafe { get; set; } = 5;
+        public double ProbCafe { get; set; } = 0.5; //aca habria que cambiar por ProbDescanso
+        public double DemoraCafe { get; set; } = 5; //aca habria que cambiar por ValorH
     }
 }

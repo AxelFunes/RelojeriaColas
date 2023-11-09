@@ -20,8 +20,9 @@ namespace RelojeriaColas.Principal
         public Relojero Relojero { get; set; }
         public Estadisticas Stats { get; set; }
         public Cafe Coffee { get; set; }
-        
-        
+        public Descanso Descanso { get; set; }
+
+
         public List<Cliente> Clients { get; set; }
         public static Random rndGenerator { get; set; } = new Random();
 
@@ -107,13 +108,15 @@ namespace RelojeriaColas.Principal
             this.WatchFix = previous.WatchFix is null ? null : (ArregloReloj)previous.WatchFix.Clone();
             this.Atencion = previous.Atencion is null ? null : (Atencion)previous.Atencion.Clone();
             //this.Coffee = previous.Coffee is null ? null : (Cafe)previous.Coffee.Clone();
-        
+            
+
             this.ClientArrival = new LlegadaCliente(parameterObj.LlegadaClientesD, parameterObj.LlegadaClientesH, this.Reloj);
             Cliente arrivedClient = new Cliente();
             this.ClientQuantity++;
             arrivedClient.Id = this.ClientQuantity;
             this.ClientReason = new tipoAtencion();
             arrivedClient.TipoAtencion = this.ClientReason.Atencion;
+           
             if (this.Ayudante.AyudanteQueue == 0 && this.Ayudante.AyudanteEstado == Eventos.Evento.Free)
             {
                 arrivedClient.EstadoCliente = Eventos.Evento.BeingAttended;
@@ -128,6 +131,7 @@ namespace RelojeriaColas.Principal
                 this.Ayudante.AyudanteQueue++;
             }
             this.Clients.Add(arrivedClient);
+
         }
 
         private Cliente CreateAttention(Cliente client, ParametrosSimulacion parameterObj)
@@ -363,8 +367,6 @@ namespace RelojeriaColas.Principal
         public double tiempoAtencion { get; set; }
         public double FinAtencion { get; set; }
 
-        public Atencion() { }
-
         // Constructor para evento de compra
         public Atencion( double clock, ParametrosSimulacion parameterObj)
         {
@@ -384,7 +386,27 @@ namespace RelojeriaColas.Principal
             return this.MemberwiseClone();
         }
     }
-    
+    public class Descanso : ICloneable
+    {
+        public double RndDescanso { get; set; }
+        public string Tipo { get; set; }
+        public double FinDescanso { get; set; }
+
+        public object Clone()
+        {
+            throw new NotImplementedException();
+        }
+        public Descanso(double rnd)
+        {
+            this.RndDescanso = Calculos.TruncateDigits(Queue.rndGenerator.NextDouble(), 4);
+            if (rnd < 0.5)
+                this.Tipo="Refresco";
+            else
+            {
+                this.Tipo = "Café";
+            }
+        }
+    }
     public class Cafe : ICloneable
     {
         public double RndCafe { get; set; }
@@ -394,7 +416,7 @@ namespace RelojeriaColas.Principal
         public Cafe(double actualClock, double demora, double randomCafe)
         {
             this.RndCafe = randomCafe;
-            //this.Cafecito = TomaCafe();
+            this.Cafecito = TomaCafe();
             this.FinCafe = Calculos.TruncateDigits(actualClock + demora, 3);
             
             
@@ -412,11 +434,11 @@ namespace RelojeriaColas.Principal
         }
         public string TomaCafe()
         {
-            if (this.RndCafe < 0.5)
-                return ("Toma Cafe");
+            if (this.RndCafe > 0.5)
+                return ("Refresco");
             else
             {
-                return ("No");
+                return ("Café");
             }
         }
         public object Clone()
