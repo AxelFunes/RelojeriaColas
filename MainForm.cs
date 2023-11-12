@@ -99,8 +99,9 @@ namespace RelojeriaColas
                 TiempoArregloD = double.Parse(textBoxTiempoArregloD.Text),
                 TiempoArregloH = double.Parse(textBoxTiempoArrelgoH.Text),
                 ProbCafe = double.Parse(txtProbCafe.Text),
-                DemoraCafe = double.Parse(txtDemoraCafe.Text)
-            };
+                DemoraCafe = double.Parse(txtDemoraCafe.Text),
+                A= double.Parse(txtA.Text),
+        };
         }
         private void SetParametros()
         {
@@ -119,6 +120,7 @@ namespace RelojeriaColas
             textBoxTiempoArrelgoH.Text = parametros.TiempoArregloH.ToString();
             txtProbCafe.Text = parametros.ProbCafe.ToString();
             txtDemoraCafe.Text = parametros.DemoraCafe.ToString();
+            txtA.Text = parametros.A.ToString();
 
         }
         private void CargarTabla(List<Queue> queues)
@@ -158,7 +160,7 @@ namespace RelojeriaColas
                     Toma= lastQueue.WatchFix is null ? "-" : lastQueue.WatchFix.TomaDescanso.ToString(),
                     RndTipo = lastQueue.Coffee is null ? "-" : lastQueue.WatchFix.RndTipo.ToString(),
                     TipoDescanso = lastQueue.Coffee is null ? "-" : lastQueue.Coffee.Cafecito.ToString(),
-                    FinDescanso = lastQueue.Coffee is null ? "-" : lastQueue.Coffee.FinCafe.ToString(),
+                    FinDescanso = lastQueue.WatchFix is null ? "-" : lastQueue.WatchFix.FinCafe.ToString(),
                     Relojes_Por_Retirar = lastQueue.Relojero.RelojesParaRetirar.ToString(),
                     Retiros = lastQueue.Stats.AcumuladorRetirar.ToString(),
                     Retiros_Solicitados = lastQueue.Stats.RetireRequests.ToString(),
@@ -197,7 +199,7 @@ namespace RelojeriaColas
                     Toma = row.WatchFix is null ? "-" : row.WatchFix.TomaDescanso.ToString(),
                     RndTipo = row.WatchFix is null ? "-" : row.WatchFix.RndTipo.ToString(),
                     TipoDescanso = row.Coffee is null ? "-" : row.Coffee.Cafecito.ToString(),
-                    FinDescanso = row.Coffee is null ? "-" : row.Coffee.FinCafe.ToString(),
+                    FinDescanso = row.WatchFix is null ? "-" : row.WatchFix.FinCafe.ToString(),
                     Retiros = row.Stats.AcumuladorRetirar.ToString(),
                     Retiros_Solicitados = row.Stats.RetireRequests.ToString(),
                     Tiempo_Acumulado_Ocupación_Ayudante = row.Stats.HelperOcupiedAcum.ToString(),

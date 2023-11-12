@@ -186,7 +186,7 @@ namespace RelojeriaColas.Principal
                 if(this.Relojero.EstadoRelojero == Eventos.Evento.Free)
                 {
                     this.Relojero.EstadoRelojero = Eventos.Evento.Ocupied;
-                    this.WatchFix = new ArregloReloj(parameterObj.TiempoArregloD, parameterObj.TiempoArregloH, this.Reloj, parameterObj);
+                    this.WatchFix = new ArregloReloj(parameterObj.TiempoArregloD, parameterObj.TiempoArregloH, this.Reloj, parameterObj, this.Relojero.QueueRelojero);
                     this.Stats.WatchmanOcupiedBegin = this.Reloj;                    
                 }
                 else
@@ -237,9 +237,16 @@ namespace RelojeriaColas.Principal
 
             //double RndCafe = Calculos.TruncateDigits(Queue.rndGenerator.NextDouble(), 3);
             if(previous.WatchFix.RndCafe < parameterObj.ProbCafe)
-            {
-                this.Coffee = new Cafe(this.Reloj, parameterObj.DemoraCafe, previous.WatchFix.RndCafe);
-                this.Relojero.EstadoRelojero = Eventos.Evento.Descansando;
+            {if (previous.WatchFix.DemoraEuler != null)
+                {
+                    this.Coffee = new Cafe(this.Reloj, previous.WatchFix.DemoraEuler, previous.WatchFix.RndCafe);
+                    this.Relojero.EstadoRelojero = Eventos.Evento.Descansando;
+                }
+                else
+                {
+                    this.Coffee = new Cafe(this.Reloj, 0, previous.WatchFix.RndCafe);
+                    this.Relojero.EstadoRelojero = Eventos.Evento.Descansando;
+                }
             }
             
             //if (this.Coffee.FinCafe != 0 /*&&this.Cafecito.FinCafe != null*/)
@@ -254,7 +261,7 @@ namespace RelojeriaColas.Principal
             else
             {
                 this.Relojero.QueueRelojero--;
-                this.WatchFix = new ArregloReloj(parameterObj.TiempoArregloD, parameterObj.TiempoArregloH, this.Reloj,parameterObj);
+                this.WatchFix = new ArregloReloj(parameterObj.TiempoArregloD, parameterObj.TiempoArregloH, this.Reloj,parameterObj, this.Relojero.QueueRelojero);
                 this.Stats.WatchmanOcupiedBegin = this.Reloj;
                 //this.Coffee = previous.Coffee;
             }
@@ -282,7 +289,7 @@ namespace RelojeriaColas.Principal
             else
             {
                 this.Relojero.QueueRelojero--;
-                this.WatchFix = new ArregloReloj(parameterObj.TiempoArregloD, parameterObj.TiempoArregloH, this.Reloj, parameterObj);
+                this.WatchFix = new ArregloReloj(parameterObj.TiempoArregloD, parameterObj.TiempoArregloH, this.Reloj, parameterObj, this.Relojero.QueueRelojero);
                 this.Stats.WatchmanOcupiedBegin = this.Reloj;
                 this.Relojero.EstadoRelojero = Eventos.Evento.Ocupied;
             }
@@ -417,7 +424,7 @@ namespace RelojeriaColas.Principal
         {
             this.RndCafe = randomCafe;
             this.Cafecito = TomaCafe(randomCafe);
-            this.FinCafe = Calculos.TruncateDigits(actualClock + demora, 3);
+            this.FinCafe = actualClock + demora;
             
             
         }
@@ -458,8 +465,9 @@ namespace RelojeriaColas.Principal
         public string Tipo { get; set; }
         //public string Cafecito { get; set; }
         public double FinCafe { get; set; }
+        public double DemoraEuler { get; set; }
 
-        public ArregloReloj(double desde, double hasta, double actualClock, ParametrosSimulacion parameterObj)
+        public ArregloReloj(double desde, double hasta, double actualClock, ParametrosSimulacion parameterObj, double relojEnCola)
         {
             this.RNDArregloReloj = Calculos.TruncateDigits(Queue.rndGenerator.NextDouble(), 3);
             this.tiempoArreglo = Calculos.TruncateDigits(calcularArreglo(desde, hasta), 3);
@@ -468,9 +476,9 @@ namespace RelojeriaColas.Principal
             this.TomaDescanso = Toma(RndCafe,parameterObj);
             this.RndTipo = Calculos.TruncateDigits(Queue.rndGenerator.NextDouble(), 3);
             this.Tipo = TomaCafe(RndTipo);
+            this.FinCafe = CalculoDemora(Tipo, relojEnCola, parameterObj) + actualClock;
 
-            //this.Cafecito = TomaCafe();
-            //this.FinCafe = FinCafecito(actualClock);
+
         }
         //private double FinCafecito(double actualClock)
         //{
@@ -492,6 +500,40 @@ namespace RelojeriaColas.Principal
         //        return ("No");
         //    }
         //}
+
+        public double CalculoDemora(string tipo, double relojEnCola, ParametrosSimulacion parameterObj)
+        {
+            double demora = 0;
+            if (tipo == "Refresco")
+            {
+                demora = ResolverPorEuler(parameterObj, relojEnCola, 50);
+            }
+            else
+            {
+                demora = ResolverPorEuler(parameterObj, relojEnCola, 80);
+            }
+            return demora;
+        }
+        static double ResolverPorEuler(ParametrosSimulacion parameterObj, double relojEnCola, double C)
+        {
+            double t = 0.0;
+            double h = 0.1;
+            double D = 0.0;
+            double a = parameterObj.A;
+
+          
+            while (D < C)
+            {
+                // Calcular la siguiente iteración usando el método de Euler
+                double dDdt = 0.4 * C + t + a * relojEnCola;
+                D += h * dDdt;
+
+                // Avanzar en el tiempo
+                t += h;
+            }
+
+            return t;
+        }
         public string TomaCafe(double rnd)
         {
             if (rnd > 0.5)
@@ -501,7 +543,6 @@ namespace RelojeriaColas.Principal
                 return ("Café");
             }
         }
-
         public string Toma(double rnd, ParametrosSimulacion parameterObj)
         {
             if (rnd < parameterObj.ProbCafe)  
