@@ -78,7 +78,7 @@ namespace RelojeriaColas.Principal
             }
             else if (this.Evento == Eventos.Evento.FinCafecito)
             {
-                this.Reloj = Calculos.TruncateDigits(previous.Coffee.FinCafe, 4);
+                this.Reloj = Calculos.TruncateDigits(previous.WatchFix.FinCafe, 4);
                 this.FinCafecin(parameterObj, previous);
             }
             this.Stats.HelperTotalTime = this.Reloj;
@@ -298,7 +298,7 @@ namespace RelojeriaColas.Principal
         {
             double nextEndOfAttention = this.Atencion != null ? this.Atencion.FinAtencion : 9329318293812.123;
             double nextEndOfFix = this.WatchFix != null ? this.WatchFix.finArreglo : 9329318293812.123;
-            double nextEndCoffee = this.Coffee != null ? this.Coffee.FinCafe : 9329318293812.123;
+            double nextEndCoffee = this.WatchFix != null ? this.WatchFix.FinCafe : 9329318293812.123;
             
             double nextArrival = this.ClientArrival.proximaLlegada;
 
