@@ -186,7 +186,7 @@ namespace RelojeriaColas.Principal
                 if(this.Relojero.EstadoRelojero == Eventos.Evento.Free)
                 {
                     this.Relojero.EstadoRelojero = Eventos.Evento.Ocupied;
-                    this.WatchFix = new ArregloReloj(parameterObj.TiempoArregloD, parameterObj.TiempoArregloH, this.Reloj);
+                    this.WatchFix = new ArregloReloj(parameterObj.TiempoArregloD, parameterObj.TiempoArregloH, this.Reloj, parameterObj);
                     this.Stats.WatchmanOcupiedBegin = this.Reloj;                    
                 }
                 else
@@ -254,7 +254,7 @@ namespace RelojeriaColas.Principal
             else
             {
                 this.Relojero.QueueRelojero--;
-                this.WatchFix = new ArregloReloj(parameterObj.TiempoArregloD, parameterObj.TiempoArregloH, this.Reloj);
+                this.WatchFix = new ArregloReloj(parameterObj.TiempoArregloD, parameterObj.TiempoArregloH, this.Reloj,parameterObj);
                 this.Stats.WatchmanOcupiedBegin = this.Reloj;
                 //this.Coffee = previous.Coffee;
             }
@@ -282,7 +282,7 @@ namespace RelojeriaColas.Principal
             else
             {
                 this.Relojero.QueueRelojero--;
-                this.WatchFix = new ArregloReloj(parameterObj.TiempoArregloD, parameterObj.TiempoArregloH, this.Reloj);
+                this.WatchFix = new ArregloReloj(parameterObj.TiempoArregloD, parameterObj.TiempoArregloH, this.Reloj, parameterObj);
                 this.Stats.WatchmanOcupiedBegin = this.Reloj;
                 this.Relojero.EstadoRelojero = Eventos.Evento.Ocupied;
             }
@@ -416,7 +416,7 @@ namespace RelojeriaColas.Principal
         public Cafe(double actualClock, double demora, double randomCafe)
         {
             this.RndCafe = randomCafe;
-            this.Cafecito = TomaCafe();
+            this.Cafecito = TomaCafe(randomCafe);
             this.FinCafe = Calculos.TruncateDigits(actualClock + demora, 3);
             
             
@@ -432,9 +432,9 @@ namespace RelojeriaColas.Principal
                 return (0);
             }
         }
-        public string TomaCafe()
+        public string TomaCafe(double rnd)
         {
-            if (this.RndCafe > 0.5)
+            if (rnd > 0.5)
                 return ("Refresco");
             else
             {
@@ -453,15 +453,22 @@ namespace RelojeriaColas.Principal
         public double tiempoArreglo { get; set; }
         public double finArreglo { get; set; }
         public double RndCafe { get; set; }
+        public string TomaDescanso { get; set; }
+        public double RndTipo { get; set; }
+        public string Tipo { get; set; }
         //public string Cafecito { get; set; }
         public double FinCafe { get; set; }
 
-        public ArregloReloj(double desde, double hasta, double actualClock)
+        public ArregloReloj(double desde, double hasta, double actualClock, ParametrosSimulacion parameterObj)
         {
             this.RNDArregloReloj = Calculos.TruncateDigits(Queue.rndGenerator.NextDouble(), 3);
             this.tiempoArreglo = Calculos.TruncateDigits(calcularArreglo(desde, hasta), 3);
             this.finArreglo = Calculos.TruncateDigits(this.tiempoArreglo + actualClock, 3);
             this.RndCafe = Calculos.TruncateDigits(Queue.rndGenerator.NextDouble(), 3);
+            this.TomaDescanso = Toma(RndCafe,parameterObj);
+            this.RndTipo = Calculos.TruncateDigits(Queue.rndGenerator.NextDouble(), 3);
+            this.Tipo = TomaCafe(RndTipo);
+
             //this.Cafecito = TomaCafe();
             //this.FinCafe = FinCafecito(actualClock);
         }
@@ -485,6 +492,24 @@ namespace RelojeriaColas.Principal
         //        return ("No");
         //    }
         //}
+        public string TomaCafe(double rnd)
+        {
+            if (rnd > 0.5)
+                return ("Refresco");
+            else
+            {
+                return ("Café");
+            }
+        }
+
+        public string Toma(double rnd, ParametrosSimulacion parameterObj)
+        {
+            if (rnd < parameterObj.ProbCafe)  
+                return ("SI");
+          
+            return ("NO");
+            
+        }
         private double calcularArreglo(double desde, double hasta)
         {
 
