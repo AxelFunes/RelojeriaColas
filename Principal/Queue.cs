@@ -78,7 +78,7 @@ namespace RelojeriaColas.Principal
             }
             else if (this.Evento == Eventos.Evento.FinCafecito)
             {
-                this.Reloj = Calculos.TruncateDigits(previous.WatchFix.FinCafe, 4);
+                this.Reloj = Calculos.TruncateDigits(previous.Coffee.FinCafe, 4);
                 this.FinCafecin(parameterObj, previous);
             }
             this.Stats.HelperTotalTime = this.Reloj;
@@ -298,7 +298,7 @@ namespace RelojeriaColas.Principal
         {
             double nextEndOfAttention = this.Atencion != null ? this.Atencion.FinAtencion : 9329318293812.123;
             double nextEndOfFix = this.WatchFix != null ? this.WatchFix.finArreglo : 9329318293812.123;
-            double nextEndCoffee = this.WatchFix != null ? this.WatchFix.FinCafe : 9329318293812.123;
+            double nextEndCoffee = this.Coffee!= null ? this.Coffee.FinCafe : 9329318293812.123;
             
             double nextArrival = this.ClientArrival.proximaLlegada;
 
@@ -507,18 +507,18 @@ namespace RelojeriaColas.Principal
         {
             double demora = 0;
             Euler euler = new Euler();
-            if 
+            if
                 (tipo == "Refresco")
             {
                 //demora = ResolverPorEuler(parameterObj, relojEnCola, 50);
-                
-                demora= (this.DemoraEuler = euler.GenerateEulerTable(parameterObj, 50, relojEnCola));
+
+                demora = (this.DemoraEuler = euler.GenerateEulerTable(parameterObj, 50, relojEnCola));
             }
             else
             {
                 //demora = ResolverPorEuler(parameterObj, relojEnCola, 80);
-                
-               demora= (this.DemoraEuler = euler.GenerateEulerTable(parameterObj, 80, relojEnCola));
+
+                demora = (this.DemoraEuler = euler.GenerateEulerTable(parameterObj, 80, relojEnCola));
             }
             return demora;
         }

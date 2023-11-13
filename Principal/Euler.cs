@@ -27,7 +27,7 @@ namespace RelojeriaColas.Principal
 
         public double GenerateEulerTable(ParametrosSimulacion parameterObj, double cParam, double rParam)
         {
-            
+
             double t = 0.0;
             double h = parameterObj.H;
             double D = 0.0;
