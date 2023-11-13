@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Principal\Euler.cs" />
     <Compile Include="Principal\Queue.cs" />
     <Compile Include="Principal\QueueSimulation.cs" />
     <Compile Include="Principal\ParametrosSimulacion.cs" />

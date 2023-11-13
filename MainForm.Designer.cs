@@ -35,7 +35,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.labelTitle = new System.Windows.Forms.Label();
             this.groupBoxParameters = new System.Windows.Forms.GroupBox();
-            this.txtDemoraCafe = new System.Windows.Forms.TextBox();
+            this.txtA = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtH = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtProbCafe = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -78,8 +80,6 @@
             this.lbl_OcupAyudante = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtA = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBoxParameters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFromRowToRow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLastRow)).BeginInit();
@@ -104,7 +104,7 @@
             this.groupBoxParameters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.groupBoxParameters.Controls.Add(this.txtA);
             this.groupBoxParameters.Controls.Add(this.label6);
-            this.groupBoxParameters.Controls.Add(this.txtDemoraCafe);
+            this.groupBoxParameters.Controls.Add(this.txtH);
             this.groupBoxParameters.Controls.Add(this.label3);
             this.groupBoxParameters.Controls.Add(this.txtProbCafe);
             this.groupBoxParameters.Controls.Add(this.label2);
@@ -146,13 +146,31 @@
             this.groupBoxParameters.TabStop = false;
             this.groupBoxParameters.Text = "Parámetros";
             // 
-            // txtDemoraCafe
+            // txtA
             // 
-            this.txtDemoraCafe.Location = new System.Drawing.Point(935, 40);
-            this.txtDemoraCafe.Margin = new System.Windows.Forms.Padding(2);
-            this.txtDemoraCafe.Name = "txtDemoraCafe";
-            this.txtDemoraCafe.Size = new System.Drawing.Size(76, 22);
-            this.txtDemoraCafe.TabIndex = 28;
+            this.txtA.Location = new System.Drawing.Point(935, 69);
+            this.txtA.Margin = new System.Windows.Forms.Padding(2);
+            this.txtA.Name = "txtA";
+            this.txtA.Size = new System.Drawing.Size(76, 22);
+            this.txtA.TabIndex = 30;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(914, 73);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(17, 16);
+            this.label6.TabIndex = 29;
+            this.label6.Text = "a:";
+            // 
+            // txtH
+            // 
+            this.txtH.Location = new System.Drawing.Point(935, 40);
+            this.txtH.Margin = new System.Windows.Forms.Padding(2);
+            this.txtH.Name = "txtH";
+            this.txtH.Size = new System.Drawing.Size(76, 22);
+            this.txtH.TabIndex = 28;
             // 
             // label3
             // 
@@ -616,24 +634,6 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "Ocupacion del relojero:";
             // 
-            // txtA
-            // 
-            this.txtA.Location = new System.Drawing.Point(935, 69);
-            this.txtA.Margin = new System.Windows.Forms.Padding(2);
-            this.txtA.Name = "txtA";
-            this.txtA.Size = new System.Drawing.Size(76, 22);
-            this.txtA.TabIndex = 30;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(914, 73);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(17, 16);
-            this.label6.TabIndex = 29;
-            this.label6.Text = "a:";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -702,7 +702,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridViewLastRow;
         private System.Windows.Forms.Label labelStats;
-        private System.Windows.Forms.TextBox txtDemoraCafe;
+        private System.Windows.Forms.TextBox txtH;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtProbCafe;
         private System.Windows.Forms.Label label2;

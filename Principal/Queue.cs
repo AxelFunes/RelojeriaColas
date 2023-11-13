@@ -469,6 +469,8 @@ namespace RelojeriaColas.Principal
 
         public ArregloReloj(double desde, double hasta, double actualClock, ParametrosSimulacion parameterObj, double relojEnCola)
         {
+            
+            
             this.RNDArregloReloj = Calculos.TruncateDigits(Queue.rndGenerator.NextDouble(), 3);
             this.tiempoArreglo = Calculos.TruncateDigits(calcularArreglo(desde, hasta), 3);
             this.finArreglo = Calculos.TruncateDigits(this.tiempoArreglo + actualClock, 3);
@@ -504,13 +506,19 @@ namespace RelojeriaColas.Principal
         public double CalculoDemora(string tipo, double relojEnCola, ParametrosSimulacion parameterObj)
         {
             double demora = 0;
-            if (tipo == "Refresco")
+            Euler euler = new Euler();
+            if 
+                (tipo == "Refresco")
             {
-                demora = ResolverPorEuler(parameterObj, relojEnCola, 50);
+                //demora = ResolverPorEuler(parameterObj, relojEnCola, 50);
+                
+                demora= (this.DemoraEuler = euler.GenerateEulerTable(parameterObj, 50, relojEnCola));
             }
             else
             {
-                demora = ResolverPorEuler(parameterObj, relojEnCola, 80);
+                //demora = ResolverPorEuler(parameterObj, relojEnCola, 80);
+                
+               demora= (this.DemoraEuler = euler.GenerateEulerTable(parameterObj, 80, relojEnCola));
             }
             return demora;
         }

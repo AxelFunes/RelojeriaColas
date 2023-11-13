@@ -99,7 +99,7 @@ namespace RelojeriaColas
                 TiempoArregloD = double.Parse(textBoxTiempoArregloD.Text),
                 TiempoArregloH = double.Parse(textBoxTiempoArrelgoH.Text),
                 ProbCafe = double.Parse(txtProbCafe.Text),
-                DemoraCafe = double.Parse(txtDemoraCafe.Text),
+                DemoraCafe = double.Parse(txtH.Text),
                 A= double.Parse(txtA.Text),
         };
         }
@@ -119,7 +119,7 @@ namespace RelojeriaColas
             textBoxTiempoArregloD.Text = parametros.TiempoArregloD.ToString();
             textBoxTiempoArrelgoH.Text = parametros.TiempoArregloH.ToString();
             txtProbCafe.Text = parametros.ProbCafe.ToString();
-            txtDemoraCafe.Text = parametros.DemoraCafe.ToString();
+            txtH.Text = parametros.DemoraCafe.ToString();
             txtA.Text = parametros.A.ToString();
 
         }
