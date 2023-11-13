@@ -439,6 +439,7 @@ namespace RelojeriaColas.Principal
                 return (0);
             }
         }
+
         public string TomaCafe(double rnd)
         {
             if (rnd > 0.5)
@@ -522,26 +523,26 @@ namespace RelojeriaColas.Principal
             }
             return demora;
         }
-        static double ResolverPorEuler(ParametrosSimulacion parameterObj, double relojEnCola, double C)
-        {
-            double t = 0.0;
-            double h = 0.1;
-            double D = 0.0;
-            double a = parameterObj.A;
+        //static double ResolverPorEuler(ParametrosSimulacion parameterObj, double relojEnCola, double C)
+        //{
+        //    double t = 0.0;
+        //    double h = 0.1;
+        //    double D = 0.0;
+        //    double a = parameterObj.A;
 
-          
-            while (D < C)
-            {
-                // Calcular la siguiente iteración usando el método de Euler
-                double dDdt = 0.4 * C + t + a * relojEnCola;
-                D += h * dDdt;
 
-                // Avanzar en el tiempo
-                t += h;
-            }
+        //    while (D < C)
+        //    {
+        //        // Calcular la siguiente iteración usando el método de Euler
+        //        double dDdt = 0.4 * C + t + a * relojEnCola;
+        //        D += h * dDdt;
 
-            return t;
-        }
+        //        // Avanzar en el tiempo
+        //        t += h;
+        //    }
+
+        //    return t;
+        //}
         public string TomaCafe(double rnd)
         {
             if (rnd > 0.5)
