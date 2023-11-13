@@ -467,7 +467,7 @@ namespace RelojeriaColas.Principal
         //public string Cafecito { get; set; }
         public double FinCafe { get; set; }
         public double DemoraEuler { get; set; }
-
+        public string ValidarToma { get; set; }
         public ArregloReloj(double desde, double hasta, double actualClock, ParametrosSimulacion parameterObj, double relojEnCola)
         {
             
@@ -477,12 +477,13 @@ namespace RelojeriaColas.Principal
             this.finArreglo = Calculos.TruncateDigits(this.tiempoArreglo + actualClock, 3);
             this.RndCafe = Calculos.TruncateDigits(Queue.rndGenerator.NextDouble(), 3);
             this.TomaDescanso = Toma(RndCafe,parameterObj);
-            this.RndTipo = Calculos.TruncateDigits(Queue.rndGenerator.NextDouble(), 3);
+            this.RndTipo = this.RndTipo = Calculos.TruncateDigits(Queue.rndGenerator.NextDouble(), 3);
             this.Tipo = TomaCafe(RndTipo);
-            this.FinCafe = CalculoDemora(Tipo, relojEnCola, parameterObj) + actualClock;
+            this.FinCafe = this.FinCafe = CalculoDemora(Tipo, relojEnCola, parameterObj) + actualClock;
 
 
         }
+        
         //private double FinCafecito(double actualClock)
         //{
         //    if (Cafecito == "Toma Cafe")
@@ -543,21 +544,23 @@ namespace RelojeriaColas.Principal
 
         //    return t;
         //}
+        
         public string TomaCafe(double rnd)
         {
-            if (rnd > 0.5)
-                return ("Refresco");
-            else
-            {
-                return ("Café");
-            }
+                if (rnd > 0.5)
+                    return ("Refresco");
+                else
+                {
+                    return ("Café");
+                }
         }
         public string Toma(double rnd, ParametrosSimulacion parameterObj)
         {
+            ValidarToma = null;
             if (rnd < parameterObj.ProbCafe)  
-                return ("SI");
+                return (ValidarToma="SI");
           
-            return ("NO");
+            return (ValidarToma="NO");
             
         }
         private double calcularArreglo(double desde, double hasta)
