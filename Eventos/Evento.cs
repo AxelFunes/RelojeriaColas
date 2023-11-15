@@ -12,7 +12,7 @@ namespace RelojeriaColas.Eventos
         public const string Arrival = "Llegada cliente";
         public const string EndAttention = "Fin atención";
         public const string EndFixing = "Fin arreglo";
-        public const string FinCafecito = "Fin descanso"; //cambiar el finCafecito por FinDescanso
+        public const string FinCafecito = "Fin descanso"; 
         public const string Buy = "Comprar";
         public const string Retire = "Retirar";
         public const string Leave = "Dejar";

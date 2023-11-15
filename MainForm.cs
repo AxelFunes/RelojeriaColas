@@ -99,7 +99,7 @@ namespace RelojeriaColas
                 TiempoArregloD = double.Parse(textBoxTiempoArregloD.Text),
                 TiempoArregloH = double.Parse(textBoxTiempoArrelgoH.Text),
                 ProbCafe = double.Parse(txtProbCafe.Text),
-                DemoraCafe = double.Parse(txtH.Text),
+                H = double.Parse(txtH.Text),
                 A = double.Parse(txtA.Text),
             };
         }
@@ -119,7 +119,7 @@ namespace RelojeriaColas
             textBoxTiempoArregloD.Text = parametros.TiempoArregloD.ToString();
             textBoxTiempoArrelgoH.Text = parametros.TiempoArregloH.ToString();
             txtProbCafe.Text = parametros.ProbCafe.ToString();
-            txtH.Text = parametros.DemoraCafe.ToString();
+            txtH.Text = parametros.H.ToString();
             txtA.Text = parametros.A.ToString();
 
         }
@@ -130,10 +130,7 @@ namespace RelojeriaColas
             lbl_OcupAyudante.Text = Calculos.TruncateDigits(lastQueue.Stats.HelperOcupiedAcum / lastQueue.Stats.HelperTotalTime, 4).ToString() + "%";
             lbl_Ocup_Relojero.Text = Calculos.TruncateDigits(lastQueue.Stats.RelojeroOcupacionAcum / lastQueue.Stats.TiempoTotalRelojero, 4).ToString() + "%";
             lbl_Prob_ST.Text = Calculos.TruncateDigits((lastQueue.Stats.RetireRequests - lastQueue.Stats.AcumuladorRetirar) / lastQueue.Stats.RetireRequests, 4).ToString();
-            //labelStats.Text = "Porcentaje de ocupacion del ayudante = " + Calculos.TruncateDigits(lastQueue.Stats.HelperOcupiedAcum / lastQueue.Stats.HelperTotalTime, 4).ToString();
-            //labelStats.Text += " // Porcentaje de ocupacion del relojero = " + Calculos.TruncateDigits(lastQueue.Stats.RelojeroOcupacionAcum / lastQueue.Stats.TiempoTotalRelojero, 4).ToString();
-            //labelStats.Text += " // Probabilidad de reloj sin terminar = " + Calculos.TruncateDigits((lastQueue.Stats.RetireRequests - lastQueue.Stats.AcumuladorRetirar) / lastQueue.Stats.RetireRequests, 4).ToString();
-
+            
             //Last Queue
             dataGridViewLastRow.Rows.Clear();
             BindingSource bindingLastQueueSource = new BindingSource
@@ -276,25 +273,14 @@ namespace RelojeriaColas
         {
             ControlV.AllowOnlyNumbersAndDigits(e);
         }
-        private void txtProbCafe_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ControlV.AllowOnlyNumbersAndDigits(e);
-        }
-        private void txtDemoraCafe_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ControlV.AllowOnlyNumbersAndDigits(e);
-        }
-
         private void labelQuantityIterations_Click(object sender, EventArgs e)
         {
 
         }
-
         private void textBoxTiempoArregloD_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private void labelFixParentesis_Click(object sender, EventArgs e)
         {
 
