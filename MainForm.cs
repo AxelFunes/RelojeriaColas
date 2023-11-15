@@ -14,9 +14,7 @@ namespace RelojeriaColas
 {
     public partial class MainForm : Form
     {
-        public double AverageOcupiedHelper { get; set; }
-        public double AverageOcupiedWatchman { get; set; }
-        public double ProbabiliOfFixNotFinished { get; set; }
+        
         public MainForm()
         {
             InitializeComponent();
