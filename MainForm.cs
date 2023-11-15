@@ -25,7 +25,7 @@ namespace RelojeriaColas
         //Metodos
         private bool ValidarDatos()
         {
-            if(string.IsNullOrEmpty(textBoxTiempoSimulacion.Text) || int.Parse(textBoxTiempoSimulacion.Text) < 1 || int.Parse(textBoxTiempoSimulacion.Text) > 100000)
+            if (string.IsNullOrEmpty(textBoxTiempoSimulacion.Text) || int.Parse(textBoxTiempoSimulacion.Text) < 1 || int.Parse(textBoxTiempoSimulacion.Text) > 100000)
             {
                 MessageBox.Show("La cantidad de iteraciones puede ir desde 1 a 100.000", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -40,48 +40,48 @@ namespace RelojeriaColas
                 MessageBox.Show("La cantidad de iteraciones para mostrar deben estar comprenidas entre 1 y la ultima iteracion a simular", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            else if(string.IsNullOrEmpty(textBoxPComprar.Text) || string.IsNullOrEmpty(textBoxPRetirar.Text) || string.IsNullOrEmpty(textBoxPEntregar.Text) || double.Parse(textBoxPComprar.Text) < 0 || double.Parse(textBoxPComprar.Text) > 1 || double.Parse(textBoxPEntregar.Text) < 0 || double.Parse(textBoxPEntregar.Text) > 1 || double.Parse(textBoxPRetirar.Text) < 0 || double.Parse(textBoxPRetirar.Text) > 1)
+            else if (string.IsNullOrEmpty(textBoxPComprar.Text) || string.IsNullOrEmpty(textBoxPRetirar.Text) || string.IsNullOrEmpty(textBoxPEntregar.Text) || double.Parse(textBoxPComprar.Text) < 0 || double.Parse(textBoxPComprar.Text) > 1 || double.Parse(textBoxPEntregar.Text) < 0 || double.Parse(textBoxPEntregar.Text) > 1 || double.Parse(textBoxPRetirar.Text) < 0 || double.Parse(textBoxPRetirar.Text) > 1)
             {
                 MessageBox.Show("Las probabilidades deben estar comprendidas entre 0 y 1", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            else if(double.Parse(textBoxPComprar.Text) + double.Parse(textBoxPEntregar.Text) + double.Parse(textBoxPRetirar.Text) != 1)
+            else if (double.Parse(textBoxPComprar.Text) + double.Parse(textBoxPEntregar.Text) + double.Parse(textBoxPRetirar.Text) != 1)
             {
                 MessageBox.Show("La suma de probabilidades debe ser igual a 1", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            else if(string.IsNullOrEmpty(textBoxLlegadaClientesD.Text) || double.Parse(textBoxLlegadaClientesD.Text) < 1)
+            else if (string.IsNullOrEmpty(textBoxLlegadaClientesD.Text) || double.Parse(textBoxLlegadaClientesD.Text) < 1)
             {
                 MessageBox.Show("A de la distribucion de llegada de clientes debe ser mayor o igual a 1", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            else if (string.IsNullOrEmpty(textBoxTiempoCompraD.Text) ||  double.Parse(textBoxTiempoCompraD.Text) < 1)
+            else if (string.IsNullOrEmpty(textBoxTiempoCompraD.Text) || double.Parse(textBoxTiempoCompraD.Text) < 1)
             {
                 MessageBox.Show("A de la distribucion del tiempo de tardanza de compra debe ser mayor o igual a 1", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            else if(string.IsNullOrEmpty(textBoxTiempoArregloD.Text) ||  double.Parse(textBoxTiempoArregloD.Text) < 1)
+            else if (string.IsNullOrEmpty(textBoxTiempoArregloD.Text) || double.Parse(textBoxTiempoArregloD.Text) < 1)
             {
                 MessageBox.Show("A de la distribucion del tiempo de reparacion debe ser mayor o igual a 1", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            else if(string.IsNullOrEmpty(textBoxLlegadaClientesH.Text) || double.Parse(textBoxLlegadaClientesH.Text) <= double.Parse(textBoxLlegadaClientesD.Text))
+            else if (string.IsNullOrEmpty(textBoxLlegadaClientesH.Text) || double.Parse(textBoxLlegadaClientesH.Text) <= double.Parse(textBoxLlegadaClientesD.Text))
             {
                 MessageBox.Show("B de la distribucion de llegada de clientes debe ser mayor a A", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            else if(string.IsNullOrEmpty(textBoxTiempoCompraH.Text) || double.Parse(textBoxTiempoCompraH.Text) <= double.Parse(textBoxTiempoCompraD.Text))
+            else if (string.IsNullOrEmpty(textBoxTiempoCompraH.Text) || double.Parse(textBoxTiempoCompraH.Text) <= double.Parse(textBoxTiempoCompraD.Text))
             {
                 MessageBox.Show("B de la distribucion del tiempo de tardanza de compra debe ser mayor a A", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            else if(string.IsNullOrEmpty(textBoxTiempoArrelgoH.Text) ||  double.Parse(textBoxTiempoArrelgoH.Text) <= double.Parse(textBoxTiempoArregloD.Text))
+            else if (string.IsNullOrEmpty(textBoxTiempoArrelgoH.Text) || double.Parse(textBoxTiempoArrelgoH.Text) <= double.Parse(textBoxTiempoArregloD.Text))
             {
                 MessageBox.Show("B de la distribucion del tiempo de reparacion debe ser mayor a A", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
-        }  
+        }
         private ParametrosSimulacion GenerarParametros()
         {
             return new ParametrosSimulacion
@@ -100,13 +100,13 @@ namespace RelojeriaColas
                 TiempoArregloH = double.Parse(textBoxTiempoArrelgoH.Text),
                 ProbCafe = double.Parse(txtProbCafe.Text),
                 DemoraCafe = double.Parse(txtH.Text),
-                A= double.Parse(txtA.Text),
-        };
+                A = double.Parse(txtA.Text),
+            };
         }
         private void SetParametros()
         {
             ParametrosSimulacion parametros = new ParametrosSimulacion();
-            textBoxTiempoSimulacion.Text  = parametros.Cantidad.ToString();
+            textBoxTiempoSimulacion.Text = parametros.Cantidad.ToString();
             textBoxIteraciones.Text = parametros.DesdeMinuto.ToString();
             textBoxCantidadIteraciones.Text = parametros.CantidadIteraciones.ToString();
             textBoxPComprar.Text = parametros.ProbComprar.ToString();
@@ -157,10 +157,10 @@ namespace RelojeriaColas
                     Tiempo_Arreglo = lastQueue.WatchFix is null ? "-" : lastQueue.WatchFix.tiempoArreglo.ToString(),
                     Fin_Arreglo = lastQueue.WatchFix is null ? "-" : lastQueue.WatchFix.finArreglo.ToString(),
                     RndDescanso = lastQueue.WatchFix is null ? "-" : lastQueue.WatchFix.RndCafe.ToString(),
-                    Toma= lastQueue.WatchFix is null ? "-" : lastQueue.WatchFix.TomaDescanso.ToString(),
-                    RndTipo = (lastQueue.WatchFix is null || lastQueue.WatchFix.TomaDescanso == "NO") ? "-" : lastQueue.WatchFix.RndTipo.ToString(),
-                    TipoDescanso = (lastQueue.WatchFix is null || lastQueue.WatchFix.TomaDescanso == "NO") ? "-" : lastQueue.WatchFix.Tipo.ToString(),
-                    FinDescanso = (lastQueue.WatchFix is null || lastQueue.WatchFix.TomaDescanso == "NO") ? "-" : lastQueue.WatchFix.FinCafe.ToString(),
+                    Toma = lastQueue.Descanso is null ? "-" : lastQueue.Descanso.TomaDescanso.ToString(),
+                    RndTipo = (lastQueue.Descanso is null || lastQueue.Descanso.TomaDescanso == "NO") ? "-" : lastQueue.Descanso.RndCafe.ToString(),
+                    TipoDescanso = (lastQueue.Descanso is null || lastQueue.Descanso.TomaDescanso == "NO") ? "-" : lastQueue.Descanso.Tipo.ToString(),
+                    FinDescanso = (lastQueue.Descanso is null || lastQueue.Descanso.TomaDescanso == "NO") ? "-" : lastQueue.Descanso.FinCafe.ToString(),
                     Relojes_Por_Retirar = lastQueue.Relojero.RelojesParaRetirar.ToString(),
                     Retiros = lastQueue.Stats.AcumuladorRetirar.ToString(),
                     Retiros_Solicitados = lastQueue.Stats.RetireRequests.ToString(),
@@ -169,7 +169,7 @@ namespace RelojeriaColas
                     Clientes = ParseClients(lastQueue.Clients),
                 }
             };
-            
+
             dataGridViewLastRow.DataSource = bindingLastQueueSource;
 
             // Queues For Show
@@ -195,11 +195,11 @@ namespace RelojeriaColas
                     RND_Arreglo = row.WatchFix is null ? "-" : row.WatchFix.RNDArregloReloj.ToString(),
                     Tiempo_Arreglo = row.WatchFix is null ? "-" : row.WatchFix.tiempoArreglo.ToString(),
                     Fin_Arreglo = row.WatchFix is null ? "-" : row.WatchFix.finArreglo.ToString(),
-                    RndDescanso = row.WatchFix is null ? "-" : row.WatchFix.RndCafe.ToString(),
-                    Toma = row.WatchFix is null ? "-" : row.WatchFix.TomaDescanso.ToString(),
-                    RndTipo = (row.WatchFix is null || row.WatchFix.TomaDescanso == "NO") ? "-" : row.WatchFix.RndTipo.ToString(),
-                    TipoDescanso = (row.WatchFix is null || row.WatchFix.TomaDescanso == "NO") ? "-" : row.WatchFix.Tipo.ToString(),
-                    FinDescanso = (row.WatchFix is null || row.WatchFix.TomaDescanso == "NO") ? "-" : row.WatchFix.FinCafe.ToString(),
+                    RndDescanso = row.Descanso is null ? "-" : row.Descanso.RndDescanso.ToString(),
+                    Toma = row.Descanso is null ? "-" : row.Descanso.TomaDescanso.ToString(),
+                    RndTipo = (row.Descanso is null || row.Descanso.TomaDescanso == "NO") ? "-" : row.Descanso.RndTipo.ToString(),
+                    TipoDescanso = (row.Descanso is null || row.Descanso.TomaDescanso == "NO") ? "-" : row.Descanso.Tipo.ToString(),
+                    FinDescanso = (row.Descanso is null || row.Descanso is null || row.Descanso.TomaDescanso == "NO") ? "-" : row.Descanso.FinCafe.ToString(),
                     Retiros = row.Stats.AcumuladorRetirar.ToString(),
                     Retiros_Solicitados = row.Stats.RetireRequests.ToString(),
                     Tiempo_Acumulado_Ocupación_Ayudante = row.Stats.HelperOcupiedAcum.ToString(),
@@ -226,7 +226,7 @@ namespace RelojeriaColas
             {
                 QueueSimulation queueSimulation = new QueueSimulation();
                 CargarTabla(queueSimulation.crearQueues(GenerarParametros()));
-            } 
+            }
         }
         private void textBoxTiempoSimulacion_KeyPress(object sender, KeyPressEventArgs e)
         {
